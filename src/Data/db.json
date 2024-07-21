@@ -1,0 +1,40 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "name": "Zafira Galea",
+      "username": "zafirag",
+      "email": "galeazafira@gmail.com",
+      "phone": "0896747356",
+      "gender": "Female",
+      "password": "zafira240601"
+    },
+    {
+      "id": 3,
+      "name": "Dhiaz Shobhi",
+      "username": "ddhiaz",
+      "email": "dhiaz1804@gmail.com",
+      "gender": "Male",
+      "phone": "08987654321",
+      "password": "test123"
+    },
+    {
+      "id": 4,
+      "name": "Leya",
+      "username": "Lee",
+      "email": "leyatest@gmail.com",
+      "phone": "08080808008",
+      "gender": "Male",
+      "password": "test123"
+    },
+    {
+      "id": 5,
+      "name": "Zoro",
+      "username": "zz",
+      "email": "za@za.com",
+      "phone": "78945622222",
+      "gender": "Male",
+      "password": "aaaa"
+    }
+  ]
+}
