@@ -236,21 +236,37 @@ const User = ({ userstate, loaduser }) => {
     </Box>
   ) : (
     <div>
-      <h1 style={{ margin: "4%" }}>Users</h1>
-      <div style={{ margin: "4%" }}>
-        <Button variant="contained" onClick={addUser}>
-          Add new user +
+      <h1 style={{ margin: "4%", textAlign: "center" }}>USER ACCOUNT</h1>
+      <div
+        style={{
+          margin: "4%",
+          marginLeft: "auto",
+          display: "flex",
+          justifyContent: "flex-end",
+        }}
+      >
+        <Button
+          variant="contained"
+          onClick={addUser}
+          style={{ backgroundColor: "#f01a89" }}
+        >
+          Add new user
         </Button>
       </div>
+
       <Paper sx={{ margin: "4%" }}>
         <TableContainer>
           <Table>
             <TableHead>
-              <TableRow style={{ backgroundColor: "gray" }}>
+              <TableRow>
                 {columns.map((column) => (
                   <TableCell
                     key={column.id}
-                    style={{ backgroundColor: "white" }}
+                    style={{
+                      backgroundColor: "#6B2D5C",
+                      color: "white",
+                      textAlign: "center",
+                    }}
                   >
                     {column.name}
                   </TableCell>
@@ -262,7 +278,13 @@ const User = ({ userstate, loaduser }) => {
                 userstate.userlist
                   .slice(page * rowPage, page * rowPage + rowPage)
                   .map((row, i) => (
-                    <TableRow key={i}>
+                    <TableRow
+                      key={i}
+                      style={{
+                        backgroundColor:
+                          i % 2 === 0 ? "white" : "rgba(226, 194, 144, 0.4)",
+                      }}
+                    >
                       <TableCell>{row.id}</TableCell>
                       <TableCell>{row.name}</TableCell>
                       <TableCell>{row.username}</TableCell>
@@ -274,18 +296,14 @@ const User = ({ userstate, loaduser }) => {
                         <Button
                           variant="contained"
                           color="warning"
-                          onClick={(e) => {
-                            handleEdit(row.id);
-                          }}
+                          onClick={(e) => handleEdit(row.id)}
                         >
                           Edit
                         </Button>
                         <Button
                           variant="contained"
                           color="error"
-                          onClick={(e) => {
-                            handleDelete(row.id);
-                          }}
+                          onClick={(e) => handleDelete(row.id)}
                         >
                           Delete
                         </Button>
@@ -303,7 +321,7 @@ const User = ({ userstate, loaduser }) => {
           component={"div"}
           onPageChange={handlePageChange}
           onRowsPerPageChange={handleRowChange}
-        ></TablePagination>
+        />
       </Paper>
 
       <Dialog open={open} onClose={closePopup} maxWidth="sm">
@@ -321,12 +339,42 @@ const User = ({ userstate, loaduser }) => {
                 onChange={(e) => setName(e.target.value)}
                 variant="outlined"
                 label="Name"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "&:hover fieldset": {
+                      borderColor: "#ff5376",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#ff5376",
+                    },
+                  },
+                  "& .MuiInputLabel-root": {
+                    "&.Mui-focused": {
+                      color: "#ff5376",
+                    },
+                  },
+                }}
               />
               <TextField
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 variant="outlined"
                 label="Username"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "&:hover fieldset": {
+                      borderColor: "#ff5376",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#ff5376",
+                    },
+                  },
+                  "& .MuiInputLabel-root": {
+                    "&.Mui-focused": {
+                      color: "#ff5376",
+                    },
+                  },
+                }}
               />
               <TextField
                 type="email"
@@ -334,12 +382,42 @@ const User = ({ userstate, loaduser }) => {
                 onChange={(e) => setEmail(e.target.value)}
                 variant="outlined"
                 label="Email"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "&:hover fieldset": {
+                      borderColor: "#ff5376",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#ff5376",
+                    },
+                  },
+                  "& .MuiInputLabel-root": {
+                    "&.Mui-focused": {
+                      color: "#ff5376",
+                    },
+                  },
+                }}
               />
               <TextField
                 value={phone}
                 onChange={handlePhoneChange}
                 variant="outlined"
                 label="Phone"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "&:hover fieldset": {
+                      borderColor: "#ff5376",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#ff5376",
+                    },
+                  },
+                  "& .MuiInputLabel-root": {
+                    "&.Mui-focused": {
+                      color: "#ff5376",
+                    },
+                  },
+                }}
               />
               <RadioGroup
                 row
@@ -348,12 +426,26 @@ const User = ({ userstate, loaduser }) => {
               >
                 <FormControlLabel
                   value="Male"
-                  control={<Radio color="success" />}
+                  control={
+                    <Radio
+                      sx={{
+                        color: "#ff5376",
+                        "&.Mui-checked": { color: "#ff5376" },
+                      }}
+                    />
+                  }
                   label="Male"
                 />
                 <FormControlLabel
                   value="Female"
-                  control={<Radio color="success" />}
+                  control={
+                    <Radio
+                      sx={{
+                        color: "#ff5376",
+                        "&.Mui-checked": { color: "#ff5376" },
+                      }}
+                    />
+                  }
                   label="Female"
                 />
               </RadioGroup>
@@ -371,6 +463,21 @@ const User = ({ userstate, loaduser }) => {
                       </IconButton>
                     </InputAdornment>
                   ),
+                }}
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "&:hover fieldset": {
+                      borderColor: "#ff5376",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#ff5376",
+                    },
+                  },
+                  "& .MuiInputLabel-root": {
+                    "&.Mui-focused": {
+                      color: "#ff5376",
+                    },
+                  },
                 }}
               />
               <TextField
@@ -395,13 +502,28 @@ const User = ({ userstate, loaduser }) => {
                     </InputAdornment>
                   ),
                 }}
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "&:hover fieldset": {
+                      borderColor: "#ff5376",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#ff5376",
+                    },
+                  },
+                  "& .MuiInputLabel-root": {
+                    "&.Mui-focused": {
+                      color: "#ff5376",
+                    },
+                  },
+                }}
               />
               <Button
                 type="submit"
                 variant="contained"
                 disabled={isSubmitDisabled}
                 sx={{
-                  backgroundColor: isSubmitDisabled ? "gray" : undefined,
+                  backgroundColor: isSubmitDisabled ? "gray" : "#ff5376",
                   "&:disabled": {
                     backgroundColor: "gray",
                   },
