@@ -38,6 +38,7 @@ import { ThreeDots } from "react-loader-spinner";
 
 const User = ({ userstate, loaduser }) => {
   const columns = [
+    { id: "profilePicture", name: "Profile Picture" },
     { id: "no", name: "No" },
     { id: "id", name: "Id" },
     { id: "name", name: "Name" },
@@ -69,6 +70,8 @@ const User = ({ userstate, loaduser }) => {
   const [page, setPage] = useState(0);
   const [editUser, setEditUser] = useState(false);
   const [title, setTitle] = useState("Create User");
+  const [profilePicture, setProfilePicture] = useState("");
+  const [imagePreview, setImagePreview] = useState("");
 
   const editData = useSelector((state) => state.user.userdata);
 
@@ -82,6 +85,8 @@ const User = ({ userstate, loaduser }) => {
       setGender(editData.gender);
       setPassword(editData.password);
       setConfirmPassword("");
+      setProfilePicture(editData.profilePicture || "");
+      setImagePreview(editData.profilePicture || "");
     } else {
       resetFields();
     }
@@ -96,6 +101,8 @@ const User = ({ userstate, loaduser }) => {
     setGender("");
     setPassword("");
     setConfirmPassword("");
+    setProfilePicture("");
+    setImagePreview("");
   };
 
   const closePopup = () => {
@@ -115,9 +122,8 @@ const User = ({ userstate, loaduser }) => {
   };
 
   const sortedUserList = userstate.userlist
-    .slice() 
-    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)); 
-
+    .slice()
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -135,6 +141,18 @@ const User = ({ userstate, loaduser }) => {
     const phoneRegex = /^\d{0,12}$/;
     if (phoneRegex.test(phoneValue)) {
       setPhone(phoneValue);
+    }
+  };
+
+  const handleProfilePictureChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfilePicture(file); 
+        setImagePreview(reader.result); 
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -161,6 +179,7 @@ const User = ({ userstate, loaduser }) => {
       phone,
       gender,
       password,
+      profilePicture: imagePreview,
     };
     if (editUser) {
       dispatch(EditUser(newUser));
@@ -280,7 +299,8 @@ const User = ({ userstate, loaduser }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {sortedUserList && userstate.userlist &&
+              {sortedUserList &&
+                userstate.userlist &&
                 userstate.userlist
                   .slice(page * rowPage, page * rowPage + rowPage)
                   .map((row, i) => (
@@ -291,7 +311,22 @@ const User = ({ userstate, loaduser }) => {
                           i % 2 === 0 ? "white" : "rgba(226, 194, 144, 0.4)",
                       }}
                     >
-                  <TableCell>{page * rowPage + i + 1}</TableCell> 
+                      <TableCell>{page * rowPage + i + 1}</TableCell>
+                      <TableCell>
+                        {row.profilePicture ? (
+                          <img
+                            src={row.profilePicture}
+                            alt="Profile"
+                            style={{
+                              width: 50,
+                              height: 50,
+                              borderRadius: "50%",
+                            }}
+                          />
+                        ) : (
+                          <div>No Picture</div>
+                        )}
+                      </TableCell>
                       <TableCell>{row.id}</TableCell>
                       <TableCell>{row.name}</TableCell>
                       <TableCell>{row.username}</TableCell>
@@ -341,6 +376,24 @@ const User = ({ userstate, loaduser }) => {
         <DialogContent>
           <form onSubmit={handleSubmit}>
             <Stack spacing={2} margin={2}>
+              <Button variant="contained" component="label">
+                Upload Profile Picture
+                <input
+                  type="file"
+                  hidden
+                  accept="image/*"
+                  onChange={handleProfilePictureChange}
+                />
+              </Button>
+              {imagePreview && (
+                <Box mt={2}>
+                  <img
+                    src={imagePreview}
+                    alt="Profile Preview"
+                    style={{ width: 100, height: 100, borderRadius: "50%" }}
+                  />
+                </Box>
+              )}
               <TextField
                 value={name}
                 onChange={(e) => setName(e.target.value)}
