@@ -1,3 +1,13 @@
+# What is this app?
+
+This application contains a list of user accounts that must be added. This application can be used by application managers as a database application for the list of users of an application.
+You can view the list of accounts according to the most recently added accounts and can specify how many rows in the table to view the list of accounts you want to see.
+
+1. The features available here are quite simple, you can create a new account by clicking the ‘Add New User’ button. When you press it, you will be displayed with a modal popup to fill in the data to create this account.
+2. You must complete the data, if there are any errors in filling you will be reminded through the alert provided.
+3. Next, you can edit the user data of your choice starting from the name, username, password, and others by pressing the ‘Edit’ button on the line.
+4. On certain rows (specific accounts), you can delete them by pressing the ‘Delete’ button.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -38,6 +38,7 @@ import { ThreeDots } from "react-loader-spinner";
 
 const User = ({ userstate, loaduser }) => {
   const columns = [
+    { id: "no", name: "No" },
     { id: "id", name: "Id" },
     { id: "name", name: "Name" },
     { id: "username", name: "Username" },
@@ -112,6 +113,11 @@ const User = ({ userstate, loaduser }) => {
     setTitle("Create User");
     openPopup();
   };
+
+  const sortedUserList = userstate.userlist
+    .slice() 
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)); 
+
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -274,7 +280,7 @@ const User = ({ userstate, loaduser }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {userstate.userlist &&
+              {sortedUserList && userstate.userlist &&
                 userstate.userlist
                   .slice(page * rowPage, page * rowPage + rowPage)
                   .map((row, i) => (
@@ -285,6 +291,7 @@ const User = ({ userstate, loaduser }) => {
                           i % 2 === 0 ? "white" : "rgba(226, 194, 144, 0.4)",
                       }}
                     >
+                  <TableCell>{page * rowPage + i + 1}</TableCell> 
                       <TableCell>{row.id}</TableCell>
                       <TableCell>{row.name}</TableCell>
                       <TableCell>{row.username}</TableCell>
