@@ -13,7 +13,7 @@ You can view the list of accounts according to the most recently added accounts 
 3. To open JSON data it is recommended to install with this version 'npm install -g json-server@0.16.3' 
 4. Then run the server with the following  'json-server --watch src/Data/db.json --port 8000'
 5. Open with the link http://localhost:8000/user to view JSON data
-6. Then run the application with ‘npm start’, then you can explore this application ^-^
+6. Then run the application with ‘npm start’ or you can open this link https://obsfrontend.vercel.app/ in your browser, then you can explore this application ^-^
 
 
 --------------------------------------

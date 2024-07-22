@@ -16,7 +16,7 @@ export const GetAllAccounts = () => {
     setTimeout(() => {
       // console.log('Fetching data...');
       axios
-        .get('http://localhost:8000/user')
+        .get('https://users-api-beryl.vercel.app/api/user')
         .then((res) => {
           // console.log('Response received:', res);
           const _list = res.data;
@@ -35,7 +35,7 @@ export const CreateUser = (userlist) => {
     dispatch(makeRequest());
     // console.log('Fetching data...');
     axios
-      .post('http://localhost:8000/user', userlist)
+      .post('https://users-api-beryl.vercel.app/api/user', userlist)
       .then(() => {
         // console.log('Response received:', res);
         //   const _list = res.data;
@@ -55,7 +55,7 @@ export const GetUserbyCode = (code) => {
     //   dispatch(makeRequest());
     // console.log('Fetching user by code');
     axios
-      .get('http://localhost:8000/user/' + code)
+      .get('https://users-api-beryl.vercel.app/api/user/' + code)
       .then((res) => {
         // console.log('Response received:', res);
         const _obj = res.data;
@@ -74,7 +74,10 @@ export const EditUser = (userlist) => {
     dispatch(makeRequest());
     // console.log('Fetching data...');
     axios
-      .put('http://localhost:8000/user/' + userlist.id, userlist)
+      .put(
+        'https://users-api-beryl.vercel.app/api/user/' + userlist.id,
+        userlist
+      )
       .then(() => {
         // console.log('Response received:', res);
         //   const _list = res.data;
