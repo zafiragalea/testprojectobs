@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Dialog,
   DialogContent,
@@ -12,9 +12,9 @@ import {
   Box,
   Stack,
   InputAdornment,
-} from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
+} from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 const UserDialog = ({
   open,
@@ -46,7 +46,7 @@ const UserDialog = ({
   <Dialog open={open} onClose={closePopup} maxWidth="sm">
     <DialogTitle>
       <span>{title}</span>
-      <IconButton style={{ float: "right" }} onClick={closePopup}>
+      <IconButton style={{ float: 'right' }} onClick={closePopup}>
         <CloseIcon color="gray" />
       </IconButton>
     </DialogTitle>
@@ -67,7 +67,7 @@ const UserDialog = ({
               <img
                 src={imagePreview}
                 alt="Profile Preview"
-                style={{ width: 100, height: 100, borderRadius: "50%" }}
+                style={{ width: 100, height: 100, borderRadius: '50%' }}
               />
             </Box>
           )}
@@ -77,17 +77,17 @@ const UserDialog = ({
             variant="outlined"
             label="Name"
             sx={{
-              "& .MuiOutlinedInput-root": {
-                "&:hover fieldset": {
-                  borderColor: "#ff5376",
+              '& .MuiOutlinedInput-root': {
+                '&:hover fieldset': {
+                  borderColor: '#ff5376',
                 },
-                "&.Mui-focused fieldset": {
-                  borderColor: "#ff5376",
+                '&.Mui-focused fieldset': {
+                  borderColor: '#ff5376',
                 },
               },
-              "& .MuiInputLabel-root": {
-                "&.Mui-focused": {
-                  color: "#ff5376",
+              '& .MuiInputLabel-root': {
+                '&.Mui-focused': {
+                  color: '#ff5376',
                 },
               },
             }}
@@ -98,17 +98,17 @@ const UserDialog = ({
             variant="outlined"
             label="Username"
             sx={{
-              "& .MuiOutlinedInput-root": {
-                "&:hover fieldset": {
-                  borderColor: "#ff5376",
+              '& .MuiOutlinedInput-root': {
+                '&:hover fieldset': {
+                  borderColor: '#ff5376',
                 },
-                "&.Mui-focused fieldset": {
-                  borderColor: "#ff5376",
+                '&.Mui-focused fieldset': {
+                  borderColor: '#ff5376',
                 },
               },
-              "& .MuiInputLabel-root": {
-                "&.Mui-focused": {
-                  color: "#ff5376",
+              '& .MuiInputLabel-root': {
+                '&.Mui-focused': {
+                  color: '#ff5376',
                 },
               },
             }}
@@ -120,17 +120,17 @@ const UserDialog = ({
             variant="outlined"
             label="Email"
             sx={{
-              "& .MuiOutlinedInput-root": {
-                "&:hover fieldset": {
-                  borderColor: "#ff5376",
+              '& .MuiOutlinedInput-root': {
+                '&:hover fieldset': {
+                  borderColor: '#ff5376',
                 },
-                "&.Mui-focused fieldset": {
-                  borderColor: "#ff5376",
+                '&.Mui-focused fieldset': {
+                  borderColor: '#ff5376',
                 },
               },
-              "& .MuiInputLabel-root": {
-                "&.Mui-focused": {
-                  color: "#ff5376",
+              '& .MuiInputLabel-root': {
+                '&.Mui-focused': {
+                  color: '#ff5376',
                 },
               },
             }}
@@ -141,17 +141,17 @@ const UserDialog = ({
             variant="outlined"
             label="Phone"
             sx={{
-              "& .MuiOutlinedInput-root": {
-                "&:hover fieldset": {
-                  borderColor: "#ff5376",
+              '& .MuiOutlinedInput-root': {
+                '&:hover fieldset': {
+                  borderColor: '#ff5376',
                 },
-                "&.Mui-focused fieldset": {
-                  borderColor: "#ff5376",
+                '&.Mui-focused fieldset': {
+                  borderColor: '#ff5376',
                 },
               },
-              "& .MuiInputLabel-root": {
-                "&.Mui-focused": {
-                  color: "#ff5376",
+              '& .MuiInputLabel-root': {
+                '&.Mui-focused': {
+                  color: '#ff5376',
                 },
               },
             }}
@@ -166,8 +166,8 @@ const UserDialog = ({
               control={
                 <Radio
                   sx={{
-                    color: "#ff5376",
-                    "&.Mui-checked": { color: "#ff5376" },
+                    color: '#ff5376',
+                    '&.Mui-checked': { color: '#ff5376' },
                   }}
                 />
               }
@@ -178,8 +178,8 @@ const UserDialog = ({
               control={
                 <Radio
                   sx={{
-                    color: "#ff5376",
-                    "&.Mui-checked": { color: "#ff5376" },
+                    color: '#ff5376',
+                    '&.Mui-checked': { color: '#ff5376' },
                   }}
                 />
               }
@@ -187,7 +187,7 @@ const UserDialog = ({
             />
           </RadioGroup>
           <TextField
-            type={showPassword ? "text" : "password"}
+            type={showPassword ? 'text' : 'password'}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             variant="outlined"
@@ -202,23 +202,23 @@ const UserDialog = ({
               ),
             }}
             sx={{
-              "& .MuiOutlinedInput-root": {
-                "&:hover fieldset": {
-                  borderColor: "#ff5376",
+              '& .MuiOutlinedInput-root': {
+                '&:hover fieldset': {
+                  borderColor: '#ff5376',
                 },
-                "&.Mui-focused fieldset": {
-                  borderColor: "#ff5376",
+                '&.Mui-focused fieldset': {
+                  borderColor: '#ff5376',
                 },
               },
-              "& .MuiInputLabel-root": {
-                "&.Mui-focused": {
-                  color: "#ff5376",
+              '& .MuiInputLabel-root': {
+                '&.Mui-focused': {
+                  color: '#ff5376',
                 },
               },
             }}
           />
           <TextField
-            type={showConfirmPassword ? "text" : "password"}
+            type={showConfirmPassword ? 'text' : 'password'}
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             variant="outlined"
@@ -236,17 +236,17 @@ const UserDialog = ({
               ),
             }}
             sx={{
-              "& .MuiOutlinedInput-root": {
-                "&:hover fieldset": {
-                  borderColor: "#ff5376",
+              '& .MuiOutlinedInput-root': {
+                '&:hover fieldset': {
+                  borderColor: '#ff5376',
                 },
-                "&.Mui-focused fieldset": {
-                  borderColor: "#ff5376",
+                '&.Mui-focused fieldset': {
+                  borderColor: '#ff5376',
                 },
               },
-              "& .MuiInputLabel-root": {
-                "&.Mui-focused": {
-                  color: "#ff5376",
+              '& .MuiInputLabel-root': {
+                '&.Mui-focused': {
+                  color: '#ff5376',
                 },
               },
             }}

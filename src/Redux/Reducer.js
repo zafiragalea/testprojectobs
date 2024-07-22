@@ -7,13 +7,13 @@ import {
   REQ_GETALL_FAIL,
   REQ_GETALL_SUCC,
   REQ_GETBYCODE_SUCC,
-} from "./ActionType";
+} from './ActionType';
 
 export const initialstate = {
   isloading: false,
   userlist: [],
   userdata: {},
-  errormessage: "",
+  errormessage: '',
 };
 export const UserReducer = (state = initialstate, action) => {
   switch (action.type) {
@@ -35,7 +35,7 @@ export const UserReducer = (state = initialstate, action) => {
         userlist: [],
         errormessage: action.payload,
       };
-    case REQ_ADD_SUCC:
+    case REQ_ADD_SUCC: {
       const _inputdata = { ...action.payload };
       const _maxid = Math.max(...state.userlist.map((o) => o.id));
       _inputdata.id = _maxid + 1;
@@ -43,6 +43,8 @@ export const UserReducer = (state = initialstate, action) => {
         ...state,
         userlist: [...state.userlist, _inputdata],
       };
+    }
+
     case OPEN_POPUP:
       return {
         ...state,
@@ -53,7 +55,7 @@ export const UserReducer = (state = initialstate, action) => {
         ...state,
         userdata: action.payload,
       };
-    case REQ_EDIT_SUCC:
+    case REQ_EDIT_SUCC: {
       const _data = { ...action.payload };
       const _updatedData = state.userlist.map((item) => {
         return item.id === _data.id ? _data : item;
@@ -62,7 +64,8 @@ export const UserReducer = (state = initialstate, action) => {
         ...state,
         userlist: _updatedData,
       };
-    case REQ_DELETE_SUCC:
+    }
+    case REQ_DELETE_SUCC: {
       const _selectData = state.userlist.filter((userlist) => {
         return userlist.id !== action.payload;
       });
@@ -70,6 +73,7 @@ export const UserReducer = (state = initialstate, action) => {
         ...state,
         userlist: _selectData,
       };
+    }
     default:
       return state;
   }

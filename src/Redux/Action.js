@@ -7,7 +7,7 @@ import {
   REQ_GETBYCODE_SUCC,
   REQ_EDIT_SUCC,
   REQ_DELETE_SUCC,
-} from "./ActionType";
+} from './ActionType';
 
 export const makeRequest = () => {
   return {

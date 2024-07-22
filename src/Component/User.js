@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   Button,
   Dialog,
@@ -23,55 +23,54 @@ import {
   TablePagination,
   Box,
   Typography,
-} from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { connect, useDispatch, useSelector } from "react-redux";
+} from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import {
   CreateUser,
   DeleteUser,
   EditUser,
   GetAllAccounts,
   GetUserbyCode,
-} from "../Redux/ActionCreater";
-import { ThreeDots } from "react-loader-spinner";
+} from '../Redux/ActionCreater';
+import { ThreeDots } from 'react-loader-spinner';
 
 const User = ({ userstate, loaduser }) => {
   const columns = [
-    { id: "no", name: "No" },
-    { id: "profilePicture", name: "Profile Picture" },
-    { id: "id", name: "Id" },
-    { id: "name", name: "Name" },
-    { id: "username", name: "Username" },
-    { id: "email", name: "Email" },
-    { id: "phone", name: "Phone" },
-    { id: "gender", name: "Gender" },
-    { id: "password", name: "Password" },
-    { id: "action", name: "Action" },
+    { id: 'no', name: 'No' },
+    { id: 'profilePicture', name: 'Profile Picture' },
+    { id: 'id', name: 'Id' },
+    { id: 'name', name: 'Name' },
+    { id: 'username', name: 'Username' },
+    { id: 'email', name: 'Email' },
+    { id: 'phone', name: 'Phone' },
+    { id: 'gender', name: 'Gender' },
+    { id: 'password', name: 'Password' },
+    { id: 'action', name: 'Action' },
   ];
 
   const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
   //   const [lastId, setLastId] = useState(0);
   const [open, setOpen] = useState(false);
-  const [id, setId] = useState("");
-  const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [gender, setGender] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [id, setId] = useState('');
+  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [gender, setGender] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [alertOpen, setAlertOpen] = useState(false);
-  const [alertMessage, setAlertMessage] = useState("");
+  const [alertMessage, setAlertMessage] = useState('');
   const [rowPage, setRowPage] = useState(10);
   const [page, setPage] = useState(0);
   const [editUser, setEditUser] = useState(false);
-  const [title, setTitle] = useState("Create User");
-  const [profilePicture, setProfilePicture] = useState("");
-  const [imagePreview, setImagePreview] = useState("");
+  const [title, setTitle] = useState('Create User');
+  const [imagePreview, setImagePreview] = useState('');
 
   const editData = useSelector((state) => state.user.userdata);
 
@@ -84,9 +83,8 @@ const User = ({ userstate, loaduser }) => {
       setPhone(editData.phone);
       setGender(editData.gender);
       setPassword(editData.password);
-      setConfirmPassword("");
-      setProfilePicture(editData.profilePicture || "");
-      setImagePreview(editData.profilePicture || "");
+      setConfirmPassword('');
+      setImagePreview(editData.profilePicture || '');
     } else {
       resetFields();
     }
@@ -94,15 +92,14 @@ const User = ({ userstate, loaduser }) => {
 
   const resetFields = () => {
     setId(0);
-    setName("");
-    setUsername("");
-    setEmail("");
-    setPhone("");
-    setGender("");
-    setPassword("");
-    setConfirmPassword("");
-    setProfilePicture("");
-    setImagePreview("");
+    setName('');
+    setUsername('');
+    setEmail('');
+    setPhone('');
+    setGender('');
+    setPassword('');
+    setConfirmPassword('');
+    setImagePreview('');
   };
 
   const closePopup = () => {
@@ -117,7 +114,7 @@ const User = ({ userstate, loaduser }) => {
 
   const addUser = () => {
     setEditUser(false);
-    setTitle("Create User");
+    setTitle('Create User');
     openPopup();
   };
 
@@ -149,7 +146,6 @@ const User = ({ userstate, loaduser }) => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setProfilePicture(file);
         setImagePreview(reader.result);
       };
       reader.readAsDataURL(file);
@@ -160,12 +156,12 @@ const User = ({ userstate, loaduser }) => {
     e.preventDefault();
     const phoneRegex = /^\d{10,12}$/;
     if (!phoneRegex.test(phone)) {
-      setAlertMessage("Phone number must be between 10 and 12 digits!");
+      setAlertMessage('Phone number must be between 10 and 12 digits!');
       setAlertOpen(true);
       return;
     }
     if (password !== confirmPassword) {
-      setAlertMessage("Passwords do not match!");
+      setAlertMessage('Passwords do not match!');
       setAlertOpen(true);
       return;
     }
@@ -206,29 +202,29 @@ const User = ({ userstate, loaduser }) => {
 
   const handleEdit = (code) => {
     setEditUser(true);
-    setTitle("Edit User");
+    setTitle('Edit User');
     setOpen(true);
     dispatch(GetUserbyCode(code));
   };
 
   const handleDelete = (code) => {
-    if (window.confirm("Do you want to delete this account?")) {
+    if (window.confirm('Do you want to delete this account?')) {
       dispatch(DeleteUser(code));
     }
   };
 
   useEffect(() => {
-    // console.log("test data");
+    // console.log('test data');
     loaduser();
   }, [loaduser]);
 
   return userstate.isloading ? (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "50vh",
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '50vh',
       }}
     >
       <ThreeDots
@@ -261,25 +257,25 @@ const User = ({ userstate, loaduser }) => {
     </Box>
   ) : (
     <div>
-      <h1 style={{ margin: "4%", textAlign: "center" }}>USER ACCOUNT</h1>
+      <h1 style={{ margin: '4%', textAlign: 'center' }}>USER ACCOUNT</h1>
       <div
         style={{
-          margin: "4%",
-          marginLeft: "auto",
-          display: "flex",
-          justifyContent: "flex-end",
+          margin: '4%',
+          marginLeft: 'auto',
+          display: 'flex',
+          justifyContent: 'flex-end',
         }}
       >
         <Button
           variant="contained"
           onClick={addUser}
-          style={{ backgroundColor: "#f01a89" }}
+          style={{ backgroundColor: '#f01a89' }}
         >
           Add new user
         </Button>
       </div>
 
-      <Paper sx={{ margin: "4%" }}>
+      <Paper sx={{ margin: '4%' }}>
         <TableContainer>
           <Table>
             <TableHead>
@@ -288,9 +284,9 @@ const User = ({ userstate, loaduser }) => {
                   <TableCell
                     key={column.id}
                     style={{
-                      backgroundColor: "#6B2D5C",
-                      color: "white",
-                      textAlign: "center",
+                      backgroundColor: '#6B2D5C',
+                      color: 'white',
+                      textAlign: 'center',
                     }}
                   >
                     {column.name}
@@ -308,7 +304,7 @@ const User = ({ userstate, loaduser }) => {
                       key={i}
                       style={{
                         backgroundColor:
-                          i % 2 === 0 ? "white" : "rgba(226, 194, 144, 0.4)",
+                          i % 2 === 0 ? 'white' : 'rgba(226, 194, 144, 0.4)',
                       }}
                     >
                       <TableCell>{page * rowPage + i + 1}</TableCell>
@@ -320,7 +316,7 @@ const User = ({ userstate, loaduser }) => {
                             style={{
                               width: 50,
                               height: 50,
-                              borderRadius: "50%",
+                              borderRadius: '50%',
                             }}
                           />
                         ) : (
@@ -338,14 +334,14 @@ const User = ({ userstate, loaduser }) => {
                         <Button
                           variant="contained"
                           color="warning"
-                          onClick={(e) => handleEdit(row.id)}
+                          onClick={() => handleEdit(row.id)}
                         >
                           Edit
                         </Button>
                         <Button
                           variant="contained"
                           color="error"
-                          onClick={(e) => handleDelete(row.id)}
+                          onClick={() => handleDelete(row.id)}
                         >
                           Delete
                         </Button>
@@ -360,7 +356,7 @@ const User = ({ userstate, loaduser }) => {
           rowsPerPage={rowPage}
           page={page}
           count={userstate.userlist.length}
-          component={"div"}
+          component={'div'}
           onPageChange={handlePageChange}
           onRowsPerPageChange={handleRowChange}
         />
@@ -369,7 +365,7 @@ const User = ({ userstate, loaduser }) => {
       <Dialog open={open} onClose={closePopup} maxWidth="sm">
         <DialogTitle>
           <span>{title}</span>
-          <IconButton style={{ float: "right" }} onClick={closePopup}>
+          <IconButton style={{ float: 'right' }} onClick={closePopup}>
             <CloseIcon color="gray" />
           </IconButton>
         </DialogTitle>
@@ -380,7 +376,7 @@ const User = ({ userstate, loaduser }) => {
                 variant="contained"
                 component="label"
                 sx={{
-                  backgroundColor: "#ff5376",
+                  backgroundColor: '#ff5376',
                 }}
               >
                 Upload Profile Picture
@@ -396,7 +392,7 @@ const User = ({ userstate, loaduser }) => {
                   <img
                     src={imagePreview}
                     alt="Profile Preview"
-                    style={{ width: 100, height: 100, borderRadius: "50%" }}
+                    style={{ width: 100, height: 100, borderRadius: '50%' }}
                   />
                 </Box>
               )}
@@ -406,38 +402,38 @@ const User = ({ userstate, loaduser }) => {
                 variant="outlined"
                 label="Name"
                 sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "&:hover fieldset": {
-                      borderColor: "#ff5376",
+                  '& .MuiOutlinedInput-root': {
+                    '&:hover fieldset': {
+                      borderColor: '#ff5376',
                     },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#ff5376",
+                    '&.Mui-focused fieldset': {
+                      borderColor: '#ff5376',
                     },
                   },
-                  "& .MuiInputLabel-root": {
-                    "&.Mui-focused": {
-                      color: "#ff5376",
+                  '& .MuiInputLabel-root': {
+                    '&.Mui-focused': {
+                      color: '#ff5376',
                     },
                   },
                 }}
               />
               <TextField
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={({ target: { value } }) => setUsername(value)}
                 variant="outlined"
                 label="Username"
                 sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "&:hover fieldset": {
-                      borderColor: "#ff5376",
+                  '& .MuiOutlinedInput-root': {
+                    '&:hover fieldset': {
+                      borderColor: '#ff5376',
                     },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#ff5376",
+                    '&.Mui-focused fieldset': {
+                      borderColor: '#ff5376',
                     },
                   },
-                  "& .MuiInputLabel-root": {
-                    "&.Mui-focused": {
-                      color: "#ff5376",
+                  '& .MuiInputLabel-root': {
+                    '&.Mui-focused': {
+                      color: '#ff5376',
                     },
                   },
                 }}
@@ -445,21 +441,21 @@ const User = ({ userstate, loaduser }) => {
               <TextField
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={({ target: { value } }) => setEmail(value)}
                 variant="outlined"
                 label="Email"
                 sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "&:hover fieldset": {
-                      borderColor: "#ff5376",
+                  '& .MuiOutlinedInput-root': {
+                    '&:hover fieldset': {
+                      borderColor: '#ff5376',
                     },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#ff5376",
+                    '&.Mui-focused fieldset': {
+                      borderColor: '#ff5376',
                     },
                   },
-                  "& .MuiInputLabel-root": {
-                    "&.Mui-focused": {
-                      color: "#ff5376",
+                  '& .MuiInputLabel-root': {
+                    '&.Mui-focused': {
+                      color: '#ff5376',
                     },
                   },
                 }}
@@ -470,17 +466,17 @@ const User = ({ userstate, loaduser }) => {
                 variant="outlined"
                 label="Phone"
                 sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "&:hover fieldset": {
-                      borderColor: "#ff5376",
+                  '& .MuiOutlinedInput-root': {
+                    '&:hover fieldset': {
+                      borderColor: '#ff5376',
                     },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#ff5376",
+                    '&.Mui-focused fieldset': {
+                      borderColor: '#ff5376',
                     },
                   },
-                  "& .MuiInputLabel-root": {
-                    "&.Mui-focused": {
-                      color: "#ff5376",
+                  '& .MuiInputLabel-root': {
+                    '&.Mui-focused': {
+                      color: '#ff5376',
                     },
                   },
                 }}
@@ -495,8 +491,8 @@ const User = ({ userstate, loaduser }) => {
                   control={
                     <Radio
                       sx={{
-                        color: "#ff5376",
-                        "&.Mui-checked": { color: "#ff5376" },
+                        color: '#ff5376',
+                        '&.Mui-checked': { color: '#ff5376' },
                       }}
                     />
                   }
@@ -507,8 +503,8 @@ const User = ({ userstate, loaduser }) => {
                   control={
                     <Radio
                       sx={{
-                        color: "#ff5376",
-                        "&.Mui-checked": { color: "#ff5376" },
+                        color: '#ff5376',
+                        '&.Mui-checked': { color: '#ff5376' },
                       }}
                     />
                   }
@@ -516,7 +512,7 @@ const User = ({ userstate, loaduser }) => {
                 />
               </RadioGroup>
               <TextField
-                type={showPassword ? "text" : "password"}
+                type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 variant="outlined"
@@ -531,23 +527,23 @@ const User = ({ userstate, loaduser }) => {
                   ),
                 }}
                 sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "&:hover fieldset": {
-                      borderColor: "#ff5376",
+                  '& .MuiOutlinedInput-root': {
+                    '&:hover fieldset': {
+                      borderColor: '#ff5376',
                     },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#ff5376",
+                    '&.Mui-focused fieldset': {
+                      borderColor: '#ff5376',
                     },
                   },
-                  "& .MuiInputLabel-root": {
-                    "&.Mui-focused": {
-                      color: "#ff5376",
+                  '& .MuiInputLabel-root': {
+                    '&.Mui-focused': {
+                      color: '#ff5376',
                     },
                   },
                 }}
               />
               <TextField
-                type={showConfirmPassword ? "text" : "password"}
+                type={showConfirmPassword ? 'text' : 'password'}
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 variant="outlined"
@@ -569,17 +565,17 @@ const User = ({ userstate, loaduser }) => {
                   ),
                 }}
                 sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "&:hover fieldset": {
-                      borderColor: "#ff5376",
+                  '& .MuiOutlinedInput-root': {
+                    '&:hover fieldset': {
+                      borderColor: '#ff5376',
                     },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#ff5376",
+                    '&.Mui-focused fieldset': {
+                      borderColor: '#ff5376',
                     },
                   },
-                  "& .MuiInputLabel-root": {
-                    "&.Mui-focused": {
-                      color: "#ff5376",
+                  '& .MuiInputLabel-root': {
+                    '&.Mui-focused': {
+                      color: '#ff5376',
                     },
                   },
                 }}
@@ -589,9 +585,9 @@ const User = ({ userstate, loaduser }) => {
                 variant="contained"
                 disabled={isSubmitDisabled}
                 sx={{
-                  backgroundColor: isSubmitDisabled ? "gray" : "#ff5376",
-                  "&:disabled": {
-                    backgroundColor: "gray",
+                  backgroundColor: isSubmitDisabled ? 'gray' : '#ff5376',
+                  '&:disabled': {
+                    backgroundColor: 'gray',
                   },
                 }}
               >
@@ -610,7 +606,7 @@ const User = ({ userstate, loaduser }) => {
         <Alert
           onClose={handleAlertClose}
           severity="error"
-          sx={{ width: "100%" }}
+          sx={{ width: '100%' }}
         >
           {alertMessage}
         </Alert>

@@ -1,13 +1,13 @@
-import React from "react";
-import { ThreeDots } from "react-loader-spinner";
+import React from 'react';
+import { ThreeDots } from 'react-loader-spinner';
 
 const Loading = () => (
   <div
     style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      height: "50vh",
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '50vh',
     }}
   >
     <ThreeDots

@@ -1,8 +1,8 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 // import { combineReducers } from 'redux';
-import { thunk } from "redux-thunk";
-import { createLogger } from "redux-logger";
-import { UserReducer } from "./Reducer";
+import { thunk } from 'redux-thunk';
+import { createLogger } from 'redux-logger';
+import { UserReducer } from './Reducer';
 
 const rootReducer = combineReducers({
   user: UserReducer,
