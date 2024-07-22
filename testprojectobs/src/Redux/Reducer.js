@@ -15,7 +15,6 @@ export const initialstate = {
   userdata: {},
   errormessage: "",
 };
-
 export const UserReducer = (state = initialstate, action) => {
   switch (action.type) {
     case MAKE_REQ:
