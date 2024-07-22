@@ -1,5 +1,4 @@
 # What is this app?
-
 This application contains a list of user accounts that must be added. This application can be used by application managers as a database application for the list of users of an application.
 You can view the list of accounts according to the most recently added accounts and can specify how many rows in the table to view the list of accounts you want to see.
 
@@ -7,6 +6,17 @@ You can view the list of accounts according to the most recently added accounts 
 2. You must complete the data, if there are any errors in filling you will be reminded through the alert provided.
 3. Next, you can edit the user data of your choice starting from the name, username, password, and others by pressing the ‘Edit’ button on the line.
 4. On certain rows (specific accounts), you can delete them by pressing the ‘Delete’ button.
+
+# How to test this app locally
+1. Clone with the following link to your git: https://github.com/zafiragalea/testprojectobs.git
+2. Install all packages with ‘npm install’
+3. To open JSON data it is recommended to install with this version 'npm install -g json-server@0.16.3' 
+4. Then run the server with the following  'json-server --watch src/Data/db.json --port 8000'
+5. Open with the link http://localhost:8000/user to view JSON data
+6. Then run the application with ‘npm start’, then you can explore this application ^-^
+
+
+--------------------------------------
 
 # Getting Started with Create React App
 
