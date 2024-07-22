@@ -14,16 +14,17 @@ export const GetAllAccounts = () => {
   return (dispatch) => {
     dispatch(makeRequest());
     setTimeout(() => {
-      console.log("Fetching data...");
+      // console.log("Fetching data...");
       axios
         .get("http://localhost:8000/user")
         .then((res) => {
-          console.log("Response received:", res);
-          const _list = res.data;
-          dispatch(getAllRequestSuccess(_list));
+          // console.log("Response received:", res);
+          // const _list = res.data;
+          // dispatch(getAllRequestSuccess(_list));
+          dispatch(getAllRequestSuccess(res.data));
         })
         .catch((err) => {
-          console.error("Request failed:", err);
+          // console.error("Request failed:", err);
           dispatch(getAllRequestFail(err.message));
         });
     }, 1000);

@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import userstore from "./Redux/Store";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+// import UserManagement from "./Component/UserManagement";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<User />} />
+          {/* <Route path="/" element={<UserManagement />} /> */}
         </Routes>
       </BrowserRouter>
       <ToastContainer position="top-right"></ToastContainer>

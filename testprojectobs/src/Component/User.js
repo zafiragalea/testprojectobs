@@ -38,8 +38,8 @@ import { ThreeDots } from "react-loader-spinner";
 
 const User = ({ userstate, loaduser }) => {
   const columns = [
-    { id: "profilePicture", name: "Profile Picture" },
     { id: "no", name: "No" },
+    { id: "profilePicture", name: "Profile Picture" },
     { id: "id", name: "Id" },
     { id: "name", name: "Name" },
     { id: "username", name: "Username" },
@@ -149,8 +149,8 @@ const User = ({ userstate, loaduser }) => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setProfilePicture(file); 
-        setImagePreview(reader.result); 
+        setProfilePicture(file);
+        setImagePreview(reader.result);
       };
       reader.readAsDataURL(file);
     }
@@ -376,7 +376,13 @@ const User = ({ userstate, loaduser }) => {
         <DialogContent>
           <form onSubmit={handleSubmit}>
             <Stack spacing={2} margin={2}>
-              <Button variant="contained" component="label">
+              <Button
+                variant="contained"
+                component="label"
+                sx={{
+                  backgroundColor: "#ff5376",
+                }}
+              >
                 Upload Profile Picture
                 <input
                   type="file"
