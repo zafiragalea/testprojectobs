@@ -1,18 +1,32 @@
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import User from "../User";
-import { Provider } from "react-redux";
-import { createStore } from "redux";
-import rootReducer from "../../Redux/rootReducer";
+// import React from "react";
+// import User from "../User";
+import {handlePhoneChange} from "../User";
 
-const store = createStore(rootReducer);
+describe('handlePhoneChange', () => {
+  it('should update the phone number when a valid number is entered', () => {
+    const setPhoneMock = jest.fn();
+    const event = { target: { value: '1234567890' } };
+    
+    handlePhoneChange(event, setPhoneMock);
+    
+    expect(setPhoneMock).toHaveBeenCalledWith('1234567890');
+  });
 
-test("renders User component", () => {
-  render(
-    <Provider store={store}>
-      <User />
-    </Provider>
-  );
+  it('should not update the phone number when an invalid number is entered', () => {
+    const setPhoneMock = jest.fn();
+    const event = { target: { value: '1234abc' } };
+    
+    handlePhoneChange(event, setPhoneMock);
+    
+    expect(setPhoneMock).not.toHaveBeenCalled();
+  });
 
-  expect(screen.getByText(/USER ACCOUNT/i)).toBeInTheDocument();
+  it('should not update the phone number when the number exceeds 12 digits', () => {
+    const setPhoneMock = jest.fn();
+    const event = { target: { value: '1234567890123' } };
+    
+    handlePhoneChange(event, setPhoneMock);
+    
+    expect(setPhoneMock).not.toHaveBeenCalled();
+  });
 });
